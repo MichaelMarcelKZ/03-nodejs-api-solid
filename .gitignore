@@ -1,0 +1,12 @@
+# Dependencies
+node_modules
+
+# Npm Config
+.npmrc
+
+# Build
+build
+
+# Environment
+.env
+.env.test

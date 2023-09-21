@@ -1,0 +1,27 @@
+{
+  "name": "03-nodejs-api-solid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "devDependencies": {
+    "@types/node": "20.6.3",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
+    "eslint": "8.49.0",
+    "prisma": "5.3.1",
+    "ts-node-dev": "2.0.0",
+    "tsup": "7.2.0",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "@prisma/client": "5.3.1",
+    "dotenv": "16.3.1",
+    "fastify": "4.23.2",
+    "zod": "3.22.2"
+  }
+}
