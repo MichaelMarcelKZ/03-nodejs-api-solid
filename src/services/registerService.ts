@@ -1,5 +1,8 @@
-import { UsersRepository } from '@/repositories/usersRepository'
 import { hash } from 'bcryptjs'
+
+import { UsersRepository } from '@/repositories/usersRepository'
+
+import { UserAlreadyExitsError } from './errors/userAlreadyExistsError'
 
 interface RegisterServiceProps {
     name: string
@@ -16,7 +19,7 @@ export class RegisterService {
         const userEmailAlreadyExists = await this.usersRepository.findByEmail(email)
 
         if (userEmailAlreadyExists) {
-            throw new Error('Error: User already exits')
+            throw new UserAlreadyExitsError()
         }
 
         const passwordHash = await hash(password, 6)
