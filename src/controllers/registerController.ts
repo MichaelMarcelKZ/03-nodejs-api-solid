@@ -22,7 +22,6 @@ export async function registerController(request: FastifyRequest, reply: Fastify
         await registerService.execute({ name, email, password })
     } catch (err) {
         if (err instanceof HTTPSolidError) {
-            console.log('Entrou aqui!')
             return reply.status(err.code).send({ message: err.message })
         }
 
