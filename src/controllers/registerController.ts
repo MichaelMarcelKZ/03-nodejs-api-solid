@@ -27,6 +27,6 @@ export async function registerController(request: FastifyRequest, reply: Fastify
             return reply.status((err as HTTPSolidError).code).send({ message: err.message })
         }
 
-        return reply.status(500).send()
+        throw err
     }
 }
