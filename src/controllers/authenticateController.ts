@@ -1,10 +1,8 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 
-import { PrismaUsersRepository } from '@/repositories/prisma/prismaUsersRepository'
 import { HTTPSolidError } from '@/services/errors/httpSolidError'
-import { AuthenticateService } from '@/services/authenticateService'
-
+import { makeAuthenticateService } from '@/services/factories/makeAuthenticateService'
 
 export async function authenticateController(request: FastifyRequest, reply: FastifyReply) {
     const authenticateBodySchema = z.object({
@@ -15,8 +13,7 @@ export async function authenticateController(request: FastifyRequest, reply: Fas
     const { email, password } = authenticateBodySchema.parse(request.body)
 
     try {
-        const usersRepository = new PrismaUsersRepository()
-        const authenticateService = new AuthenticateService(usersRepository)
+        const authenticateService = makeAuthenticateService()
 
         await authenticateService.execute({ email, password })
     } catch (err) {
