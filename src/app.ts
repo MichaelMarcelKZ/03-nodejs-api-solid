@@ -1,7 +1,6 @@
 import fastify from 'fastify'
-
-import { register } from './controllers/register'
+import { appRoutes } from './routes'
 
 export const app = fastify()
 
-app.post('/users', register)
+app.register(appRoutes)
