@@ -1,11 +1,11 @@
 # Dependencies
 node_modules
 
-# Npm Config
-.npmrc
-
 # Build
 build
+
+# Tests
+coverage
 
 # Environment
 .env
