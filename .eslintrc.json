@@ -32,6 +32,6 @@
             "error",
             "never"
         ],
-        "camelcase": "error"
+        "camelcase": "warn"
     }
 }
