@@ -31,4 +31,10 @@ export class InMemoryGymsRepository implements GymsRepository {
 
         return gym
     }
+
+    async findManyByTitle(title: string, page: number) {
+        return this.items
+            .filter((item) => item.title.toLowerCase().includes(title.toLowerCase()))
+            .slice((page - 1) * 20, page * 20)
+    }
 }
