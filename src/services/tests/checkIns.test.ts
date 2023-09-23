@@ -11,18 +11,18 @@ let checkInsRepository: InMemoryCheckInsRepository
 let gymsRepository: InMemoryGymsRepository
 
 describe('Check-in Service', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
         checkInsRepository = new InMemoryCheckInsRepository()
         gymsRepository = new InMemoryGymsRepository()
         checkInService = new CheckInService(checkInsRepository, gymsRepository)
 
-        gymsRepository.items.push({
+        await gymsRepository.create({
             id: 'gym01',
             title: 'JS Gym',
             description: '',
             phone: '',
-            latitude: new Decimal(-26.8091442),
-            longitude: new Decimal(-49.2740054)
+            latitude: -26.8091442,
+            longitude: -49.2740054
         })
 
         vi.useFakeTimers()
