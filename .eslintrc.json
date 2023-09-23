@@ -31,7 +31,6 @@
         "semi": [
             "error",
             "never"
-        ],
-        "camelcase": "warn"
+        ]
     }
 }
