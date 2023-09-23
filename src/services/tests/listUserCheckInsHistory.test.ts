@@ -6,12 +6,12 @@ import { ListUserCheckInsHistoryService } from '../listUserCheckInsHistoryServic
 import { CheckIn } from '@prisma/client'
 
 let checkInsRepository: InMemoryCheckInsRepository
-let listUserCheckInsHistory: ListUserCheckInsHistoryService
+let listUserCheckInsHistoryService: ListUserCheckInsHistoryService
 
 describe('List User Check-In History Service', () => {
     beforeEach(async () => {
         checkInsRepository = new InMemoryCheckInsRepository()
-        listUserCheckInsHistory = new ListUserCheckInsHistoryService(checkInsRepository)
+        listUserCheckInsHistoryService = new ListUserCheckInsHistoryService(checkInsRepository)
     })
 
     it('shoud be able to list user check-in history', async () => {
@@ -25,7 +25,7 @@ describe('List User Check-In History Service', () => {
             user_id: 'user-01',
         })
 
-        const { checkIns } = await listUserCheckInsHistory.execute({
+        const { checkIns } = await listUserCheckInsHistoryService.execute({
             userId: 'user-01',
             page: 1,
         })
@@ -45,7 +45,7 @@ describe('List User Check-In History Service', () => {
             })
         }
 
-        const { checkIns } = await listUserCheckInsHistory.execute({
+        const { checkIns } = await listUserCheckInsHistoryService.execute({
             userId: 'user-01',
             page: 2,
         })
