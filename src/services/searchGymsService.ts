@@ -2,21 +2,21 @@ import { GymsRepository } from '@/repositories/gymsRepository'
 
 import { Gym } from '@prisma/client'
 
-interface SearchGymProps {
+interface SearchGymsProps {
     query: string
     page: number
 }
 
-interface SearchGymReturn {
+interface SearchGymsReturn {
     gyms: Gym[]
 }
 
-export class SearchGymService {
+export class SearchGymsService {
     constructor(private gymsRepository: GymsRepository) {
 
     }
 
-    async execute({ query, page }: SearchGymProps): Promise<SearchGymReturn> {
+    async execute({ query, page }: SearchGymsProps): Promise<SearchGymsReturn> {
         const gyms = await this.gymsRepository.findManyByTitle(query, page)
 
         return {
