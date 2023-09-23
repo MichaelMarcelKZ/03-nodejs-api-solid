@@ -5,6 +5,8 @@ import { InMemoryCheckInsRepository } from '@/repositories/inMemory/inMemoryChec
 import { InMemoryGymsRepository } from '@/repositories/inMemory/inMemoryGymsRepository'
 
 import { Decimal } from '@prisma/client/runtime/library'
+import { MaxNumberOfCheckInsError } from '../errors/maxNumberOfCheckInsError'
+import { MaxDistanceError } from '../errors/maxDistanceError'
 
 let checkInService: CheckInService
 let checkInsRepository: InMemoryCheckInsRepository
@@ -61,7 +63,7 @@ describe('Check-in Service', () => {
                 userLatitude: -26.8091442,
                 userLongitude: -49.2740054,
             })
-        ).rejects.toBeInstanceOf(Error) // TODO: Create error instance for twice in the same day
+        ).rejects.toBeInstanceOf(MaxNumberOfCheckInsError)
     })
 
     it('shoud be able to check in twice but in different days', async () => {
@@ -103,7 +105,7 @@ describe('Check-in Service', () => {
                 userLatitude: -26.8091442,
                 userLongitude: -49.2740054,
             })
-        ).rejects.toBeInstanceOf(Error)
+        ).rejects.toBeInstanceOf(MaxDistanceError)
 
     })
 })
