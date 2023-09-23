@@ -3,13 +3,13 @@ import { expect, it, describe, beforeEach } from 'vitest'
 import { InMemoryGymsRepository } from '@/repositories/inMemory/inMemoryGymsRepository'
 import { CreateGymService } from '../createGymService'
 
-let usersRepository: InMemoryGymsRepository
+let gymsRepository: InMemoryGymsRepository
 let createGymService: CreateGymService
 
 describe('Create Gym Service', () => {
     beforeEach(() => {
-        usersRepository = new InMemoryGymsRepository()
-        createGymService = new CreateGymService(usersRepository)
+        gymsRepository = new InMemoryGymsRepository()
+        createGymService = new CreateGymService(gymsRepository)
     })
 
     it('should be able to register', async () => {
