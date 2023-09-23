@@ -48,7 +48,6 @@ describe('List Nearby Gyms Service', () => {
             userLongitude: -49.2682977
         })
 
-        console.log(gyms)
         expect(gyms).toHaveLength(2)
         expect(gyms).toEqual(expect.any(Array<Gym>))
     })
