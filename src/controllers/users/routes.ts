@@ -4,7 +4,7 @@ import { authenticateController } from './authenticateController'
 import { getUserProfileController } from './getUserProfileController'
 import { ensureAuthenticated } from '@/middlewares/ensureAuthenticated'
 
-export async function appRoutes(app: FastifyInstance) {
+export async function usersRoutes(app: FastifyInstance) {
     app.post('/users', registerController)
     app.post('/sessions', authenticateController)
 
