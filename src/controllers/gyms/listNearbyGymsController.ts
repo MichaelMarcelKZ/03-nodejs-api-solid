@@ -3,7 +3,7 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 
 export async function listNearbyGymsController(request: FastifyRequest, reply: FastifyReply) {
-    const listNearbyGymsParamsSchema = z.object({
+    const listNearbyGymsQuerySchema = z.object({
         latitude: z.number().refine(value => {
             return Math.abs(value) <= 90
         }),
@@ -12,7 +12,7 @@ export async function listNearbyGymsController(request: FastifyRequest, reply: F
         }),
     })
 
-    const { latitude, longitude } = listNearbyGymsParamsSchema.parse(request.params)
+    const { latitude, longitude } = listNearbyGymsQuerySchema.parse(request.query)
 
     const listNearbyGymsService = makeListNearbyGymsService()
 
