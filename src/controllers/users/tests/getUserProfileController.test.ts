@@ -3,6 +3,8 @@ import { app } from '@/app'
 
 import { it, describe, expect, beforeAll, afterAll } from 'vitest'
 
+import { createUserAndAuthenticate } from '@/utils/tests/createAndAuthenticateUser'
+
 describe('Get User Profile (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
@@ -13,22 +15,7 @@ describe('Get User Profile (e2e)', () => {
     })
 
     it('should be able to get user profile', async () => {
-        await request(app.server)
-            .post('/users')
-            .send({
-                name: 'John Doe',
-                email: 'johndoe@example.com.br',
-                password: 'test@123',
-            })
-
-        const authResponse = await request(app.server)
-            .post('/sessions')
-            .send({
-                email: 'johndoe@example.com.br',
-                password: 'test@123',
-            })
-
-        const { token } = authResponse.body
+        const { token } = await createUserAndAuthenticate(app)
 
         const response = await request(app.server)
             .get('/profile')

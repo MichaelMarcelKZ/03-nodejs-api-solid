@@ -5,7 +5,7 @@ import { it, describe, expect, beforeAll, afterAll } from 'vitest'
 
 import { createUserAndAuthenticate } from '@/utils/tests/createAndAuthenticateUser'
 
-describe('Create Gym (e2e)', () => {
+describe('Create Check In (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })
@@ -14,10 +14,10 @@ describe('Create Gym (e2e)', () => {
         await app.close()
     })
 
-    it('should be able to create a gym', async () => {
+    it('should be able to create check in', async () => {
         const { token } = await createUserAndAuthenticate(app)
 
-        const response = await request(app.server)
+        const createGymResponse = await request(app.server)
             .post('/gyms')
             .set('Authorization', `Bearer ${token}`)
             .send({
@@ -25,6 +25,16 @@ describe('Create Gym (e2e)', () => {
                 description: 'Some description',
                 phone: '11423894823',
                 latitude: -26.8091442,
+                longitude: -49.2740054
+            })
+
+        const { gym } = createGymResponse.body
+
+        const response = await request(app.server)
+            .post(`/gyms/${gym.id}/check-in`)
+            .set('Authorization', `Bearer ${token}`)
+            .send({
+                latitude: -26.8090442,
                 longitude: -49.2740054
             })
 

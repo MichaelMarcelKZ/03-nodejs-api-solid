@@ -14,7 +14,7 @@ export async function searchGymsController(request: FastifyRequest, reply: Fasti
 
     const { gyms } = await createGymService.execute({ query: q, page })
 
-    return reply.status(201).send({
+    return reply.status(200).send({
         gyms
     })
 }

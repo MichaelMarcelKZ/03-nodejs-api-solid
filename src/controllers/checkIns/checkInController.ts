@@ -9,10 +9,10 @@ export async function checkInController(request: FastifyRequest, reply: FastifyR
     })
 
     const checkInBodySchema = z.object({
-        latitude: z.number().refine(value => {
+        latitude: z.coerce.number().refine(value => {
             return Math.abs(value) <= 90
         }),
-        longitude: z.number().refine(value => {
+        longitude: z.coerce.number().refine(value => {
             return Math.abs(value) <= 180
         }),
     })
@@ -22,12 +22,14 @@ export async function checkInController(request: FastifyRequest, reply: FastifyR
 
     const checkInService = makeCheckInService()
 
-    await checkInService.execute({
+    const { checkIn } = await checkInService.execute({
         userId: request.user.sub,
         gymId,
         userLatitude: latitude,
         userLongitude: longitude
     })
 
-    return reply.status(201).send()
+    return reply.status(201).send({
+        checkIn,
+    })
 }

@@ -21,7 +21,9 @@ export async function createGymController(request: FastifyRequest, reply: Fastif
 
     const createGymService = makeCreateGymService()
 
-    await createGymService.execute({ title, description, phone, latitude, longitude })
+    const { gym } = await createGymService.execute({ title, description, phone, latitude, longitude })
 
-    return reply.status(201).send()
+    return reply.status(201).send({
+        gym,
+    })
 }

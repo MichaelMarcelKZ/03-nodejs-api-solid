@@ -13,9 +13,11 @@ export async function validateCheckInController(request: FastifyRequest, reply: 
 
     const validateCheckInService = makeValidateCheckInService()
 
-    await validateCheckInService.execute({
+    const { checkIn } = await validateCheckInService.execute({
         checkInId
     })
 
-    return reply.status(201).send()
+    return reply.status(200).send({
+        checkIn
+    })
 }
