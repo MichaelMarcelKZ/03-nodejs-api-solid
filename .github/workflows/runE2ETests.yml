@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   run-e2e-tests:
-    name: Run Unit Tests
+    name: Run E2E Tests
     runs-on: ubuntu-latest
 
     services:
@@ -27,13 +27,13 @@ jobs:
       - run: yarn install --frozen-lockfile
 
         working-directory: ./prisma/vitest-environment-prisma
-      - run: yarn test:create-prisma-environment
+        run: yarn test:create-prisma-environment
 
         working-directory: ./
-      - run: yarn test:install-prisma-environment
+        run: yarn test:install-prisma-environment
 
         working-directory: ./
-      - run: yarn test:e2e:git
+        run: yarn test:e2e:git
         env:
           JWT_SECRET: TestingSecret
           DATABASE_URL: "postgresql://docker:docker@localhost:5432/apisolid?schema=public"
