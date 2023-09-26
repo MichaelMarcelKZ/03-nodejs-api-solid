@@ -26,10 +26,10 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn test:create-prisma-environment
+      - run: yarn link
         working-directory: prisma/vitest-environment-prisma
 
-      - run: yarn test:install-prisma-environment
+      - run: yarn link vitest-environment-prisma
 
       - run: yarn test:e2e:git
         env:
