@@ -15,7 +15,7 @@ describe('Get User Profile (e2e)', () => {
     })
 
     it('should be able to get user profile', async () => {
-        const { token } = await createUserAndAuthenticate(app)
+        const { token } = await createUserAndAuthenticate(app, false)
 
         const response = await request(app.server)
             .get('/profile')
@@ -29,6 +29,7 @@ describe('Get User Profile (e2e)', () => {
                 name: expect.any(String),
                 email: expect.any(String),
                 created_at: expect.any(String),
+                role: 'MEMBER'
             }
         })
     })
