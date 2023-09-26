@@ -26,14 +26,14 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-        working-directory: ./prisma/vitest-environment-prisma
-        run: yarn test:create-prisma-environment
+      - working-directory: ./prisma/vitest-environment-prisma
+      - run: yarn test:create-prisma-environment
 
-        working-directory: ./
-        run: yarn test:install-prisma-environment
+      - working-directory: ./
+      - run: yarn test:install-prisma-environment
 
-        working-directory: ./
-        run: yarn test:e2e:git
+      - working-directory: ./
+      - run: yarn test:e2e:git
         env:
           JWT_SECRET: TestingSecret
           DATABASE_URL: "postgresql://docker:docker@localhost:5432/apisolid?schema=public"
