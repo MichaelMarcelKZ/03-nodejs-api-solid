@@ -3,7 +3,7 @@ import { app } from '@/app'
 
 import { it, describe, expect, beforeAll, afterAll, vi, afterEach, beforeEach } from 'vitest'
 
-import { createUserAndAuthenticate } from '@/utils/tests/createAndAuthenticateUser'
+import { createUserAndAuthenticate } from '@/utils/tests/createUserAndAuthenticate'
 import { prisma } from '@/database/prisma'
 
 describe('List User Check-ins History (e2e)', () => {

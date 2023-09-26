@@ -3,7 +3,7 @@ import { app } from '@/app'
 
 import { it, describe, expect, beforeAll, afterAll } from 'vitest'
 
-import { createUserAndAuthenticate } from '@/utils/tests/createAndAuthenticateUser'
+import { createUserAndAuthenticate } from '@/utils/tests/createUserAndAuthenticate'
 
 describe('Create Gym (e2e)', () => {
     beforeAll(async () => {

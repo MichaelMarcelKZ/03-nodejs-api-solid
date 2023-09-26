@@ -3,7 +3,7 @@ import { app } from '@/app'
 
 import { it, describe, expect, beforeAll, afterAll, vi, afterEach, beforeEach } from 'vitest'
 
-import { createUserAndAuthenticate } from '@/utils/tests/createAndAuthenticateUser'
+import { createUserAndAuthenticate } from '@/utils/tests/createUserAndAuthenticate'
 
 describe('Get User Metrics (e2e)', () => {
     beforeAll(async () => {
