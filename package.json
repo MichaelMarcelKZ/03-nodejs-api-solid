@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --files -r tsconfig-paths/register src/server.ts",
     "start": "node build/server.js",
-    "test:cd-prisma-environment-folder": "cd ./prisma/vitest-environment-prisma",
+    "test:cd-prisma-environment-folder": "cd prisma/vitest-environment-prisma",
     "test:pwd": "pwd",
     "test:create-prisma-environment": "yarn link",
     "test:cd-main-folder": "cd ../../",
