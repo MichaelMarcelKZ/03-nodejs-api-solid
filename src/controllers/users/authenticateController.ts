@@ -16,13 +16,18 @@ export async function authenticateController(request: FastifyRequest, reply: Fas
         const authenticateService = makeAuthenticateService()
 
         const { user } = await authenticateService.execute({ email, password })
-        const token = await reply.jwtSign({}, {
+
+        const token = await reply.jwtSign({
+            role: user.role
+        }, {
             sign: {
-                sub: user.id
+                sub: user.id,
             },
         })
 
-        const refreshToken = await reply.jwtSign({}, {
+        const refreshToken = await reply.jwtSign({
+            role: user.role
+        }, {
             sign: {
                 sub: user.id,
                 expiresIn: '7d'
@@ -42,7 +47,6 @@ export async function authenticateController(request: FastifyRequest, reply: Fas
             })
     } catch (err) {
         if (err instanceof HTTPSolidError) {
-            console.log('Entrou aqui!')
             return reply.status(err.code).send({ message: err.message })
         }
 
