@@ -1,6 +1,33 @@
-# App
+#  Gym API Solid
 
-GymPass style app.
+Este projeto foi desenvolvido durante meus estudos na ``Trilha NodeJS`` da **Rocketseat**
+
+## Sobre o projeto
+
+O Gym API Solid é um projeto back-end desenvolvido utilizando **Design Patterns**, testes automatizados **End-To-End (E2E)** e **Unitários**, além dos princípios **SOLID** e Integração Continua **(CI)**
+
+O projeto consiste em uma aplicação onde é possível fazer check-ins em academias próximas que estão cadastradas, utilizando o conceito de aplicações como o GymPass e Totalpass, por exemplo.
+
+## Princípios, Design Patterns e Metodologias
+
+- Dependency Inversion Principle
+- Repository Pattern
+- Factory Pattern
+- In memory Test Database
+- TDD (Test-driven development) 
+- Access Token & Refresh Token
+- RBAC (Role-Based Access Control)
+- MVCS Architecture
+
+## Tecnologias
+
+- Fastify Web Framework
+- JWT (Json Web Token)
+- Prisma ORM
+- PostgreSQL
+- Docker
+- Vitest & Supertest
+- TypeScript
 
 ## RFs (Requisitos Funcionais)
 
